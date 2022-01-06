@@ -5,6 +5,7 @@ import checkRight from "../util/checkRight";
 import checkLeft from "../util/checkLeft";
 import removeEntry from "../util/removeEntry";
 
+let tootipDistance = 50;
 /**
  * auto-determine alignment
  * @param {Integer}  offsetLeft
@@ -85,8 +86,9 @@ function _determineAutoPosition(
   const possiblePositions = this._options.positionPrecedence.slice();
 
   const windowSize = getWindowSize();
-  const tooltipHeight = getOffset(tooltipLayer).height + 10;
-  const tooltipWidth = getOffset(tooltipLayer).width + 20;
+  // introjs-helperLayer 比原框要大一些
+  const tooltipHeight = getOffset(tooltipLayer).height + 40; // 加了30
+  const tooltipWidth = getOffset(tooltipLayer).width + 50; // 加了30
   const targetElementRect = targetElement.getBoundingClientRect();
 
   // If we check all the possible areas, and there are no valid places for the tooltip, the element
@@ -213,6 +215,7 @@ export default function placeTooltip(
 
   // Floating is always valid, no point in calculating
   if (currentTooltipPosition !== "floating" && this._options.autoPosition) {
+    // 自动计算位置
     currentTooltipPosition = _determineAutoPosition.call(
       this,
       targetElement,
@@ -239,7 +242,7 @@ export default function placeTooltip(
         tooltipOffset,
         tooltipLayer
       );
-      tooltipLayer.style.bottom = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
 
     case "top-middle-aligned":
@@ -270,7 +273,7 @@ export default function placeTooltip(
           tooltipLayer
         );
       }
-      tooltipLayer.style.bottom = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
 
     case "top-left-aligned":
@@ -287,16 +290,17 @@ export default function placeTooltip(
         windowSize,
         tooltipLayer
       );
-      tooltipLayer.style.bottom = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
     case "right":
-      tooltipLayer.style.left = `${targetOffset.width + 20}px`;
+      console.log('targetOffset.width', targetOffset.width);
+      tooltipLayer.style.left = `${targetOffset.width + tootipDistance}px`;
       if (targetOffset.top + tooltipOffset.height > windowSize.height) {
         // In this case, right would have fallen below the bottom of the screen.
         // Modify so that the bottom of the tooltip connects with the target
         arrowLayer.className = "introjs-arrow left-bottom";
         tooltipLayer.style.top = `-${
-          tooltipOffset.height - targetOffset.height - 20
+          tooltipOffset.height - targetOffset.height - tootipDistance
         }px`;
       } else {
         arrowLayer.className = "introjs-arrow left";
@@ -311,13 +315,13 @@ export default function placeTooltip(
         // In this case, left would have fallen below the bottom of the screen.
         // Modify so that the bottom of the tooltip connects with the target
         tooltipLayer.style.top = `-${
-          tooltipOffset.height - targetOffset.height - 20
+          tooltipOffset.height - targetOffset.height - tootipDistance
         }px`;
         arrowLayer.className = "introjs-arrow right-bottom";
       } else {
         arrowLayer.className = "introjs-arrow right";
       }
-      tooltipLayer.style.right = `${targetOffset.width + 20}px`;
+      tooltipLayer.style.right = `${targetOffset.width + tootipDistance}px`;
 
       break;
     case "floating":
@@ -340,7 +344,7 @@ export default function placeTooltip(
         tooltipOffset,
         tooltipLayer
       );
-      tooltipLayer.style.top = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.top = `${targetOffset.height + tootipDistance}px`;
       break;
 
     case "bottom-middle-aligned":
@@ -371,7 +375,7 @@ export default function placeTooltip(
           tooltipLayer
         );
       }
-      tooltipLayer.style.top = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.top = `${targetOffset.height + tootipDistance}px`;
       break;
 
     // case 'bottom-left-aligned':
@@ -389,6 +393,6 @@ export default function placeTooltip(
         windowSize,
         tooltipLayer
       );
-      tooltipLayer.style.top = `${targetOffset.height + 20}px`;
+      tooltipLayer.style.top = `${targetOffset.height + tootipDistance}px`;
   }
 }
