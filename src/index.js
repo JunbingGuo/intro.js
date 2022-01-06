@@ -38,6 +38,8 @@ function IntroJs(obj) {
     prevLabel: "Back",
     /* Skip button label in tooltip box */
     skipLabel: "×",
+    /* Skip button label in tooltip footer box */
+    skipText: '', // 底部跳过
     /* Done button label in tooltip box */
     doneLabel: "Done",
     /* Hide previous button in the first step? Otherwise, it will be disabled button. */

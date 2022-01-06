@@ -199,6 +199,8 @@ export default function _showElement(targetElement) {
   let nextTooltipButton;
   let prevTooltipButton;
   let skipTooltipButton;
+  // 底部结束按钮
+  let skipFooterButton;
 
   //check for a current step highlight class
   if (typeof targetElement.highlightClass === "string") {
@@ -224,6 +226,7 @@ export default function _showElement(targetElement) {
       oldReferenceLayer.querySelector(".introjs-tooltip");
 
     skipTooltipButton = oldReferenceLayer.querySelector(".introjs-skipbutton");
+    skipFooterButton = oldReferenceLayer.querySelector(".introjs-skipfooterbutton");
     prevTooltipButton = oldReferenceLayer.querySelector(".introjs-prevbutton");
     nextTooltipButton = oldReferenceLayer.querySelector(".introjs-nextbutton");
 
@@ -327,9 +330,9 @@ export default function _showElement(targetElement) {
     });
 
     const buttonsLayer = createElement("div");
-
+    // `0 0 1px 2px rgba(33, 33, 33, 0.8), rgba(33, 33, 33, ${self._options.overlayOpacity.toString()}) 0 0 0 5000px`
     setStyle(helperLayer, {
-      "box-shadow": `0 0 1px 2px rgba(33, 33, 33, 0.8), rgba(33, 33, 33, ${self._options.overlayOpacity.toString()}) 0 0 0 5000px`,
+      "box-shadow": `0px 8px 10px 1px rgba(0,0,0,0.14), rgba(0, 0, 0, ${self._options.overlayOpacity.toString()}) 0 0 0 5000px`,
     });
 
     // target is within a scrollable element
@@ -421,11 +424,41 @@ export default function _showElement(targetElement) {
 
       exitIntro.call(self, self._targetElement);
     };
+    // 有修改，当有skipLabel时使用跳转
+    if (this._options.skipLabel) {
+      tooltipHeaderLayer.appendChild(skipTooltipButton);
+    }
+    
 
-    tooltipHeaderLayer.appendChild(skipTooltipButton);
+    // 底部跳过
+    skipFooterButton = createElement("a", {
+      className: `${this._options.buttonClass} introjs-skipfooterbutton`,
+    });
 
-    //in order to prevent displaying previous button always
-    if (this._introItems.length > 1) {
+    skipFooterButton.onclick = () => {
+      if (
+        self._introItems.length - 1 === self._currentStep &&
+        typeof self._introCompleteCallback === "function"
+      ) {
+        self._introCompleteCallback.call(self, self._currentStep, "skip");
+      }
+
+      if (typeof self._introSkipCallback === "function") {
+        self._introSkipCallback.call(self);
+      }
+
+      exitIntro.call(self, self._targetElement);
+    };
+
+    setAnchorAsButton(skipFooterButton);
+    skipFooterButton.innerHTML = this._options.skipText;
+    // 需要时才添加底部的跳出button
+    if (this._options.skipText) {
+      buttonsLayer.appendChild(skipFooterButton);
+    }
+
+    // in order to prevent displaying previous button always, 必须有上一步内容才添加
+    if (this._introItems.length > 1 && this._options.prevLabel) {
       buttonsLayer.appendChild(prevTooltipButton);
     }
 
@@ -545,6 +578,9 @@ export default function _showElement(targetElement) {
     }
   }
 
+  if (typeof skipFooterButton !== "undefined" && skipFooterButton !== null) {
+    skipFooterButton.setAttribute("role", "button");
+  }
   if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
     prevTooltipButton.setAttribute("role", "button");
   }

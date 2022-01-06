@@ -73,13 +73,21 @@
       function startIntro(){
         var intro = introJs();
           intro.setOptions({
+            prevLabel: "",
+            nextLabel: "下一步",
+            skipLabel: "",
+            skipText: "跳过",
+            doneLabel: "下一步",
+            tooltipClass: 'td-intro-tooltip',
+            showBullets: false,
             steps: [
               {
                 intro: "Hello world!"
               },
               {
                 element: document.querySelector('#step1'),
-                intro: "This is a tooltip."
+                intro: "This is a tooltip.",
+                position: 'right'
               },
               {
                 element: document.querySelectorAll('#step2')[0],

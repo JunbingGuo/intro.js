@@ -8,6 +8,10 @@ $black200: #eeeeee;
 $black100: #f4f4f4;
 $white: #ffffff;
 
+$primary: #2185F0;
+$primary-hover: #57a3f3;
+$text-color: #515a6e;
+
 $font_family: "Helvetica Neue", Inter, ui-sans-serif, "Apple Color Emoji",
   Helvetica, Arial, sans-serif;
 $background_color_9: #08c;
@@ -166,13 +170,18 @@ tr.introjs-showElement {
   background-color: $white;
   min-width: 250px;
   max-width: 300px;
-  border-radius: 5px;
-  box-shadow: 0 3px 30px rgba($black900, 0.3);
   transition: opacity 0.1s ease-out;
+  padding: 24px;
+  // box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.14);
+  // box-shadow: 0px 3px 14px 2px rgba(0,0,0,0.12);
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2);
+  border-radius: 4px;
 }
 
 .introjs-tooltiptext {
-  padding: 20px;
+  // padding: 20px;
+  padding-bottom: 16px;
+  font-size: 14px;
 }
 
 .introjs-tooltip-title {
@@ -185,9 +194,9 @@ tr.introjs-showElement {
 }
 
 .introjs-tooltip-header {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
+  // padding-left: 20px;
+  // padding-right: 20px;
+  // padding-top: 10px;
 
   &:after {
     content: ".";
@@ -199,8 +208,8 @@ tr.introjs-showElement {
 }
 
 .introjs-tooltipbuttons {
-  border-top: 1px solid $black300;
-  padding: 10px;
+  // border-top: 1px solid $black300;
+  // padding: 0 24px;
   text-align: right;
   white-space: nowrap;
 
@@ -214,49 +223,51 @@ tr.introjs-showElement {
 }
 
 .introjs-button {
-  box-sizing: content-box;
+  box-sizing: border-box;
   position: relative;
   overflow: visible;
   display: inline-block;
+  height: 32px;
 
-  padding: 0.5rem 1rem;
+  padding: 5px 16px;
 
-  border: 1px solid $black400;
+  // border: 1px solid $black400;
   text-decoration: none;
-  text-shadow: 1px 1px 0 $white;
+  // text-shadow: 1px 1px 0 $white;
   font-size: 14px;
-  color: $black800;
+  // color: $black800;
+  color: $white;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
-  background-color: $black100;
-  border-radius: 0.2em;
-  zoom: 1;
+  background-color: $primary; // $black100;
+  border-radius: 2px;
+  // zoom: 1;
   *display: inline;
 
   &:hover {
     outline: none;
     text-decoration: none;
-    border-color: $black500;
-    background-color: $black300;
-    color: $black900;
+    // border-color: $black500;
+    background-color: $primary-hover;
+    // color: $black900;
   }
 
   &:focus {
     outline: none;
     text-decoration: none;
-    background-color: $black200;
-    box-shadow: 0 0 0 0.2rem rgba($black500, 0.5);
-    border: 1px solid $black600;
-    color: $black900;
+    // background-color: $black200;
+    // box-shadow: 0 0 0 0.2rem rgba($black500, 0.5);
+    // border: 1px solid $black600;
+    color: $white;
   }
 
   &:active {
     outline: none;
     text-decoration: none;
-    background-color: $black300;
-    border-color: $black500;
-    color: $black900;
+    // background-color: $black300;
+    // border-color: $black500;
+    color: $white;
   }
 
   &::-moz-focus-inner {
@@ -283,6 +294,15 @@ tr.introjs-showElement {
     text-decoration: none;
   }
 }
+.introjs-skipfooterbutton {
+  color: $text-color;
+  background-color: transparent;
+  border-color: transparent;
+  &:hover {
+    background-color: transparent;
+    color: $primary-hover;
+  }
+}
 
 .introjs-prevbutton {
   float: left;
@@ -290,6 +310,7 @@ tr.introjs-showElement {
 
 .introjs-nextbutton {
   float: right;
+  margin-left: 16px;
 }
 
 .introjs-disabled {
