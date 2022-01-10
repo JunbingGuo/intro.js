@@ -238,7 +238,6 @@ export default function _showElement(targetElement) {
 
     // if the target element is within a scrollable element
     scrollParentToElement.call(self, targetElement);
-
     // set new position to helper layer
     setHelperLayerPosition.call(self, oldHelperLayer);
     setHelperLayerPosition.call(self, oldReferenceLayer);

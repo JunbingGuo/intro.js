@@ -22,6 +22,7 @@ export default function setHelperLayerPosition(helperLayer) {
       this._targetElement
     );
     let widthHeightPadding = this._options.helperElementPadding;
+    let extendLeftOffset = currentElement.extendLeftOffset || 0;
 
     // If the target element is fixed, the tooltip should be fixed as well.
     // Otherwise, remove a fixed class that may be left over from the previous
@@ -38,10 +39,10 @@ export default function setHelperLayerPosition(helperLayer) {
 
     //set new position to helper layer
     setStyle(helperLayer, {
-      width: `${elementPosition.width + widthHeightPadding}px`,
+      width: `${elementPosition.width + widthHeightPadding + extendLeftOffset}px`,
       height: `${elementPosition.height + widthHeightPadding}px`,
       top: `${elementPosition.top - widthHeightPadding / 2}px`,
-      left: `${elementPosition.left - widthHeightPadding / 2}px`,
+      left: `${elementPosition.left - widthHeightPadding / 2 - extendLeftOffset}px`,
     });
   }
 }

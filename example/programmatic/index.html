@@ -85,43 +85,71 @@
             steps: [
               {
                 intro: '测试数据',
-                element: '#step2', // '.btn-large',
-                position: 'right' // right top left bottom 
+                element: '.btn-success', // '.btn-large',
+                extendLeftOffset: 100,
+                position: 'right-aligned' // right top left bottom 
                 // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
               },
               {
-                element: '#steptest1',
-                intro: 'More features, more fun.',
-                position: 'top-right'
+                intro: '测试数据',
+                element: '#step2', // '.btn-large',
+                extendLeftOffset: 100,
+                position: 'right-aligned' // right top left bottom 
+                // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
               },
               {
                 element: document.querySelector('#step1'),
                 intro: "This is a tooltip.",
-                position: 'right'
+                extendLeftOffset: 100,
+                position: 'right-aligned'
               },
               {
-                element: document.querySelectorAll('#step2')[0],
-                intro: "Ok, wasn't that fun?",
-                position: 'right'
-              },
-              {
-                element: '#step3',
+                element: '#steptest1',
                 intro: 'More features, more fun.',
-                position: 'left'
+                extendLeftOffset: 100,
+                position: 'right-aligned'
               },
-              {
-                element: '#step4',
-                intro: "Another step.",
-                position: 'bottom'
-              },
-              {
-                element: '#step5',
-                intro: 'Get it, use it.'
-              }
+              
+              // {
+              //   element: document.querySelectorAll('#step2')[0],
+              //   intro: "Ok, wasn't that fun?",
+              //   position: 'right'
+              // },
+              // {
+              //   element: '#step3',
+              //   intro: 'More features, more fun.',
+              //   position: 'left'
+              // },
+              // {
+              //   element: '#step4',
+              //   intro: "Another step.",
+              //   position: 'bottom'
+              // },
+              // {
+              //   element: '#step5',
+              //   intro: 'Get it, use it.'
+              // }
             ]
           });
 
           intro.start();
+          intro.oncomplete(()=> {
+            //点击结束按钮后执行的事件
+            console.log('done');
+          });
+          intro.onexit(()=> {
+            //点击跳过按钮后执行的事件
+            console.log('exit')
+          })
+          intro.onskip(()=> {
+            //点击跳过按钮后执行的事件
+            console.log('onskip')
+          })
+          intro.onchange(()=> {
+            //点击跳过按钮后执行的事件
+            console.log('onchange')
+          })
+          
       }
       window.onload = function() {
         startIntro();

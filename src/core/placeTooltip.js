@@ -294,6 +294,11 @@ export default function placeTooltip(
       );
       tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
+    case "right-aligned":
+      let extendLeftOffset = currentStepObj.extendLeftOffset || 0;
+      tooltipLayer.style.left = `${targetOffset.width + tootipDistance + extendLeftOffset}px`;
+      arrowLayer.className = "introjs-arrow left";
+      break;
     case "right":
       tooltipLayer.style.left = `${targetOffset.width + tootipDistance}px`;
       if (targetOffset.top + tooltipOffset.height > windowSize.height) {
