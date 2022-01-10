@@ -96,71 +96,130 @@ tr.introjs-showElement {
 }
 
 .introjs-arrow {
-  border: 5px solid transparent;
-  content: "";
+  // border: 5px solid transparent;
+  // content: "";
   position: absolute;
+  width: 40px;
+  height: 2px;
+  opacity: 1;
+  background-color: $primary;
+  &::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    background: #FFFFFF;
+    border: 1px solid #2185F0;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 1;
+  }
 }
 
 .introjs-arrow.top {
-  top: -10px;
+  top: -40px;
   left: 10px;
-  border-bottom-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    bottom: -4px;
+  }
 }
-
+// bottom-right-aligned
 .introjs-arrow.top-right {
-  top: -10px;
+  top: -40px;
   right: 10px;
-  border-bottom-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    bottom: -4px;
+  }
 }
-
+// bottom-middle-aligned
 .introjs-arrow.top-middle {
-  top: -10px;
+  top: -40px;
   left: 50%;
   margin-left: -5px;
-  border-bottom-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    bottom: -4px;
+  }
 }
 
 .introjs-arrow.right {
-  right: -10px;
+  right: -40px;
   top: 10px;
-  border-left-color: $white;
+  &::after {
+    left: -4px;
+    top: -3px;
+  }
 }
 
 .introjs-arrow.right-bottom {
   bottom: 10px;
-  right: -10px;
-  border-left-color: $white;
+  right: -40px;
+  &::after {
+    left: -4px;
+    top: -3px;
+  }
 }
 
 .introjs-arrow.bottom {
-  bottom: -10px;
+  bottom: -40px;
   left: 10px;
-  border-top-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    top: -4px;
+  }
 }
 
+// top-right-aligned
 .introjs-arrow.bottom-right {
-  bottom: -10px;
+  bottom: -40px;
   right: 10px;
-  border-top-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    top: -4px;
+  }
 }
-
+// top-middle-aligned
 .introjs-arrow.bottom-middle {
-  bottom: -10px;
+  bottom: -40px;
   left: 50%;
   margin-left: -5px;
-  border-top-color: $white;
+  width: 2px;
+  height: 40px;
+  &::after {
+    right: -3px;
+    top: -4px;
+  }
 }
 
 .introjs-arrow.left {
-  left: -10px;
+  left: -40px;
   top: 10px;
-  border-right-color: $white;
+  &::after {
+    right: -4px;
+    top: -3px;
+  }
 }
 
 .introjs-arrow.left-bottom {
-  left: -10px;
+  left: -40px;
   bottom: 10px;
-  border-right-color: $white;
+  &::after {
+    right: -4px;
+    top: -3px;
+  }
 }
 
 .introjs-tooltip {

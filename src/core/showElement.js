@@ -183,7 +183,7 @@ export function _updateProgressBar(oldReferenceLayer) {
  *
  * @api private
  * @method _showElement
- * @param {Object} targetElement
+ * @param {Object} targetElement steps数组中的item
  */
 export default function _showElement(targetElement) {
   if (typeof this._introChangeCallback !== "undefined") {

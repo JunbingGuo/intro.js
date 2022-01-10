@@ -42,7 +42,7 @@
 
       <div class="row-fluid marketing">
         <div id="step2" class="span6">
-          <h4>Section One</h4>
+          <h4 id="steptest1">Section One</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis augue a neque cursus ac blandit orci faucibus. Phasellus nec metus purus.</p>
 
           <h4>Section Two</h4>
@@ -80,9 +80,19 @@
             doneLabel: "下一步",
             tooltipClass: 'td-intro-tooltip',
             showBullets: false,
+            disableInteraction: true,
+            autoPosition: false,
             steps: [
               {
-                intro: "Hello world!"
+                intro: '测试数据',
+                element: '#step2', // '.btn-large',
+                position: 'right' // right top left bottom 
+                // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
+              },
+              {
+                element: '#steptest1',
+                intro: 'More features, more fun.',
+                position: 'top-right'
               },
               {
                 element: document.querySelector('#step1'),
@@ -113,6 +123,10 @@
 
           intro.start();
       }
+      window.onload = function() {
+        startIntro();
+      }
     </script>
+
   </body>
 </html>

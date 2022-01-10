@@ -281,7 +281,9 @@ export default function placeTooltip(
     case "top":
       arrowLayer.className = "introjs-arrow bottom";
 
-      tooltipLayerStyleLeft = hintMode ? 0 : 15;
+      // tooltipLayerStyleLeft = hintMode ? 0 : 15;
+      /**@todo 未检测是否可以这样改 */
+      tooltipLayerStyleLeft = 0;
 
       checkRight(
         targetOffset,
@@ -293,7 +295,6 @@ export default function placeTooltip(
       tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
     case "right":
-      console.log('targetOffset.width', targetOffset.width);
       tooltipLayer.style.left = `${targetOffset.width + tootipDistance}px`;
       if (targetOffset.top + tooltipOffset.height > windowSize.height) {
         // In this case, right would have fallen below the bottom of the screen.
