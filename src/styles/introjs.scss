@@ -213,6 +213,15 @@ tr.introjs-showElement {
   }
 }
 
+.introjs-arrow.left-middle {
+  left: -40px;
+  top: 50%;
+  margin-top: -5px;
+  &::after {
+    right: -4px;
+    top: -3px;
+  }
+}
 .introjs-arrow.left-bottom {
   left: -40px;
   bottom: 10px;

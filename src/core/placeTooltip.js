@@ -230,7 +230,7 @@ export default function placeTooltip(
   windowSize = getWindowSize();
 
   addClass(tooltipLayer, `introjs-${currentTooltipPosition}`);
-
+  let extendLeftOffset = currentStepObj.extendLeftOffset || 0;
   switch (currentTooltipPosition) {
     case "top-right-aligned":
       arrowLayer.className = "introjs-arrow bottom-right";
@@ -294,8 +294,15 @@ export default function placeTooltip(
       );
       tooltipLayer.style.bottom = `${targetOffset.height + tootipDistance}px`;
       break;
+    case "right-middle-aligned":
+      /**@todo 需要增加校验 */
+      tooltipLayer.style.left = `${targetOffset.width + tootipDistance + extendLeftOffset}px`;
+      var tooltipLayerStyleTopBottom =
+      targetOffset.height / 2 - tooltipOffset.height / 2;
+      tooltipLayer.style.top = `${tooltipLayerStyleTopBottom}px`;
+      arrowLayer.className = "introjs-arrow left-middle";
+      break;
     case "right-aligned":
-      let extendLeftOffset = currentStepObj.extendLeftOffset || 0;
       tooltipLayer.style.left = `${targetOffset.width + tootipDistance + extendLeftOffset}px`;
       arrowLayer.className = "introjs-arrow left";
       break;

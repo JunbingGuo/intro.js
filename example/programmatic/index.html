@@ -85,18 +85,19 @@
             steps: [
               {
                 intro: '测试数据',
-                element: '.btn-success', // '.btn-large',
+                element: '#step2', // '.btn-large',
                 extendLeftOffset: 100,
-                position: 'right-aligned' // right top left bottom 
+                position: 'right-middle-aligned' // right top left bottom 
                 // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
               },
               {
                 intro: '测试数据',
-                element: '#step2', // '.btn-large',
-                extendLeftOffset: 100,
-                position: 'right-aligned' // right top left bottom 
+                element: '.btn-success', // '.btn-large',
+                // extendLeftOffset: 100,
+                position: 'bottom-middle-aligned' // right top left bottom 
                 // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
               },
+              
               {
                 element: document.querySelector('#step1'),
                 intro: "This is a tooltip.",
