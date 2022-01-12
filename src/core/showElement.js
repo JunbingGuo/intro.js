@@ -412,7 +412,8 @@ export default function _showElement(targetElement) {
     skipTooltipButton.onclick = () => {
       if (
         self._introItems.length - 1 === self._currentStep &&
-        typeof self._introCompleteCallback === "function"
+        typeof self._introCompleteCallback === "function" &&
+        !self._options.skipNoDone
       ) {
         self._introCompleteCallback.call(self, self._currentStep, "skip");
       }
@@ -437,7 +438,8 @@ export default function _showElement(targetElement) {
     skipFooterButton.onclick = () => {
       if (
         self._introItems.length - 1 === self._currentStep &&
-        typeof self._introCompleteCallback === "function"
+        typeof self._introCompleteCallback === "function" &&
+        !self._options.skipNoDone
       ) {
         self._introCompleteCallback.call(self, self._currentStep, "skip");
       }

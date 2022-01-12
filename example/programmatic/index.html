@@ -82,7 +82,15 @@
             showBullets: false,
             disableInteraction: true,
             autoPosition: false,
+            skipNoDone: true,
             steps: [
+              {
+                intro: '测试数据',
+                element: '.btn-success', // '.btn-large',
+                // extendLeftOffset: 100,
+                position: 'bottom-right-aligned' // right top left bottom 
+                // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
+              },
               {
                 intro: '测试数据',
                 element: '#step2', // '.btn-large',
@@ -90,26 +98,18 @@
                 position: 'right-middle-aligned' // right top left bottom 
                 // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
               },
-              {
-                intro: '测试数据',
-                element: '.btn-success', // '.btn-large',
-                // extendLeftOffset: 100,
-                position: 'bottom-middle-aligned' // right top left bottom 
-                // top-right-aligned top-middle-aligned bottom-right-aligned bottom-middle-aligned
-              },
-              
-              {
-                element: document.querySelector('#step1'),
-                intro: "This is a tooltip.",
-                extendLeftOffset: 100,
-                position: 'right-aligned'
-              },
-              {
-                element: '#steptest1',
-                intro: 'More features, more fun.',
-                extendLeftOffset: 100,
-                position: 'right-aligned'
-              },
+              // {
+              //   element: document.querySelector('#step1'),
+              //   intro: "This is a tooltip.",
+              //   extendLeftOffset: 100,
+              //   position: 'right-aligned'
+              // },
+              // {
+              //   element: '#steptest1',
+              //   intro: 'More features, more fun.',
+              //   extendLeftOffset: 100,
+              //   position: 'right-aligned'
+              // },
               
               // {
               //   element: document.querySelectorAll('#step2')[0],

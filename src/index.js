@@ -58,6 +58,8 @@ function IntroJs(obj) {
     highlightClass: "",
     /* Close introduction when pressing Escape button? */
     exitOnEsc: true,
+    // 跳过是不触发oncomplete
+    skipNoDone: false,
     /* Close introduction when clicking on overlay layer? */
     exitOnOverlayClick: true,
     /* Show step numbers in introduction? */
